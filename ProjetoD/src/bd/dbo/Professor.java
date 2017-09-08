@@ -5,6 +5,8 @@
  */
 package bd.dbo;
 
+import java.util.Objects;
+
 /**
  *
  * @author bruno
@@ -74,4 +76,59 @@ public class Professor {
     {
         this.Id_Professor = Id_Professor;
     }
+
+    public Professor(int Id_Professor, String nome, String modalidade, int telefone, String email) {
+        this.Id_Professor = Id_Professor;
+        this.nome = nome;
+        this.modalidade = modalidade;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + this.Id_Professor;
+        hash = 89 * hash + Objects.hashCode(this.nome);
+        hash = 89 * hash + Objects.hashCode(this.modalidade);
+        hash = 89 * hash + this.telefone;
+        hash = 89 * hash + Objects.hashCode(this.email);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Professor other = (Professor) obj;
+        if (this.Id_Professor != other.Id_Professor) {
+            return false;
+        }
+        if (this.telefone != other.telefone) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.modalidade, other.modalidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Professor{" + "Id_Professor=" + Id_Professor + ", nome=" + nome + ", modalidade=" + modalidade + ", telefone=" + telefone + ", email=" + email + '}';
+    }
+    
 }

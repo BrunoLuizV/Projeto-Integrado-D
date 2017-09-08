@@ -5,6 +5,8 @@
  */
 package bd.dbo;
 
+import java.util.Objects;
+
 /**
  *
  * @author bruno
@@ -70,4 +72,60 @@ public class Aluno {
     {
         this.telefone = telefone;
     }
+
+    public Aluno(String nome, String email, int matricula, int cpf, int telefone) {
+        this.nome = nome;
+        this.email = email;
+        this.matricula = matricula;
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.nome);
+        hash = 43 * hash + Objects.hashCode(this.email);
+        hash = 43 * hash + this.matricula;
+        hash = 43 * hash + this.cpf;
+        hash = 43 * hash + this.telefone;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aluno other = (Aluno) obj;
+        if (this.matricula != other.matricula) {
+            return false;
+        }
+        if (this.cpf != other.cpf) {
+            return false;
+        }
+        if (this.telefone != other.telefone) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Aluno{" + "nome=" + nome + ", email=" + email + ", matricula=" + matricula + ", cpf=" + cpf + ", telefone=" + telefone + '}';
+    }
+    
+    
 }
